@@ -1,5 +1,10 @@
 module Streak
   class Comment < StreakObject
+    def self.all
+      res = Streak.request(:get, "/v2/boxes/#{box_key}/comments")
+      convert_to_streak_object(res, Comment)
+    end
+
     def self.find(key)
       res = Streak.request(:get, "/v2/comments/#{key}")
       convert_to_streak_object(res, Comment)
