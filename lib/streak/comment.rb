@@ -10,7 +10,7 @@ module Streak
       convert_to_streak_object(res, Comment)
     end
 
-    def self.create(params)
+    def self.create(key, params)
       res = Streak.request(:put, "/v2/boxes/#{key}/comments", params)
       convert_to_streak_object(res, Comment)
     end
