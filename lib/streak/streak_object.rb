@@ -33,6 +33,10 @@ module Streak
       end
     end
 
+    def get_values
+      @values
+    end
+
     def method_missing(name, *args)
       if @values.has_key?(name)
         @values[name]
