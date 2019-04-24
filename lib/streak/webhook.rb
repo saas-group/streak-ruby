@@ -15,8 +15,8 @@ module Streak
       convert_to_streak_object(res, Webhook)
     end
 
-    def self.create(params)
-      res = Streak.request(:put, "/v2/webhooks", params)
+    def self.create(pipeline_key, params={})
+      res = Streak.request(:post, "/v2/webhooks?pipelineKey=#{pipeline_key}", params)
       convert_to_streak_object(res, Webhook)
     end
 
