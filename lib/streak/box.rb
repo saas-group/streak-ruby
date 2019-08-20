@@ -20,5 +20,9 @@ module Streak
       res = Streak.request(:post, "/v1/boxes/#{key}", MultiJson.dump(params))
       convert_to_streak_object(res, Box)
     end
+
+    def self.destroy(key)
+      res = Streak.request(:delete, "/v1/boxes/#{key}")
+    end
   end
 end
