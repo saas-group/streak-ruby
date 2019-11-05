@@ -5,6 +5,11 @@ module Streak
       convert_to_streak_object(res, File)
     end
 
+    def self.find(file_key)
+      res = Streak.request(:get, "/v1/files/#{file_key}")
+      convert_to_streak_object(res, File)
+    end
+
     def self.get_link(file_key)
       res = Streak.request(:get, "/v1/files/#{file_key}/link")
       convert_to_streak_object(res, File)
