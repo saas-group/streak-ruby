@@ -11,7 +11,7 @@ module Streak
     end
 
     def self.create(key, params)
-      res = Streak.request(:put, "/v1/boxes/#{key}/threads", MultiJson.dump(params))
+      res = Streak.request(:put, "/v1/boxes/#{key}/threads", params)
       convert_to_streak_object(res, Thread)
     end
   end
