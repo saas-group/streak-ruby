@@ -23,6 +23,11 @@ module Streak
       res = Streak.request(:post, "/v1/pipelines/#{key}", MultiJson.dump(params))
       convert_to_streak_object(res, Pipeline)
     end
+
+    def self.move_box(key, params)
+      res = Streak.request(:post, "/v2/pipelines/#{key}/boxes/batch", MultiJson.dump(params))
+      convert_to_streak_object(res, Pipeline)
+    end
   end
 end
 
