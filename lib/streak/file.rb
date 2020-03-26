@@ -19,5 +19,10 @@ module Streak
       res = Streak.request(:get, "/v1/files/#{file_key}/contents")
       convert_to_streak_object(res, File)
     end
+
+    def self.create(params)
+      res = Streak.request(:post, "/v2/files/", params)
+      convert_to_streak_object(res, File)
+    end
   end
 end
