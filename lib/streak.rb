@@ -37,7 +37,7 @@ module Streak
     @api_base + url
   end
 
-  def self.request(method, url, params = {}, headers = {})
+  def self.request(method, url, params = {}, request_api_key = nil, headers = {})
     http_method = method.to_s.downcase.to_sym
     case http_method
     when :get, :head, :delete
@@ -57,9 +57,13 @@ module Streak
       :method => method,
       :verify_ssl => false,
       :url  => api_url(url),
-      :user => api_key,
+      :user => ,
       :payload => payload
     }
+
+    # Optionally use a `request_api_key` for this single request as this guarantees thread-safety
+    # The class variable `api_key` is not thread-safe
+    request_opts[:user] = request_api_key || api_key
 
     begin
       response = execute_request(request_opts)

@@ -14,8 +14,8 @@ module Streak
       convert_to_streak_object(res, FieldValue)
     end
 
-    def self.update(box_key, field_key, params={})
-      res = Streak.request(:post, "/v1/boxes/#{box_key}/fields/#{field_key}", MultiJson.dump(params))
+    def self.update(box_key, field_key, params={}, api_key=nil)
+      res = Streak.request(:post, "/v1/boxes/#{box_key}/fields/#{field_key}", MultiJson.dump(params), api_key)
       convert_to_streak_object(res, FieldValue)
     end
   end

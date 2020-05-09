@@ -10,8 +10,8 @@ module Streak
       convert_to_streak_object(res, Stage)
     end
 
-    def self.create(pipeline_key, params)
-      res = Streak.request(:put, "/v1/pipelines/#{pipeline_key}/stages", params)
+    def self.create(pipeline_key, params, api_key=nil)
+      res = Streak.request(:put, "/v1/pipelines/#{pipeline_key}/stages", params, api_key)
       convert_to_streak_object(res, Stage)
     end
   end

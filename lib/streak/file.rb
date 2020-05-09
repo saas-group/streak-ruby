@@ -20,8 +20,8 @@ module Streak
       convert_to_streak_object(res, File)
     end
 
-    def self.create(params)
-      res = Streak.request(:post, "/v2/files/", MultiJson.dump(params))
+    def self.create(params, api_key=nil)
+      res = Streak.request(:post, "/v2/files/", MultiJson.dump(params), api_key)
       convert_to_streak_object(res, File)
     end
   end

@@ -15,13 +15,13 @@ module Streak
       convert_to_streak_object(res, Webhook)
     end
 
-    def self.create(pipeline_key, params={})
-      res = Streak.request(:post, "/v2/webhooks?pipelineKey=#{pipeline_key}", params)
+    def self.create(pipeline_key, params={}, api_key=nil)
+      res = Streak.request(:post, "/v2/webhooks?pipelineKey=#{pipeline_key}", params, api_key)
       convert_to_streak_object(res, Webhook)
     end
 
-    def self.update(key, params)
-      res = Streak.request(:post, "/v2/webhooks/#{key}", MultiJson.dump(params))
+    def self.update(key, params, api_key=nil)
+      res = Streak.request(:post, "/v2/webhooks/#{key}", MultiJson.dump(params), api_key)
       convert_to_streak_object(res, Webhook)
     end
   end

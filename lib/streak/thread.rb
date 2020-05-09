@@ -10,8 +10,8 @@ module Streak
       convert_to_streak_object(res, Thread)
     end
 
-    def self.create(key, params)
-      res = Streak.request(:put, "/v1/boxes/#{key}/threads", params)
+    def self.create(key, params, api_key=nil)
+      res = Streak.request(:put, "/v1/boxes/#{key}/threads", params, api_key)
       convert_to_streak_object(res, Thread)
     end
   end

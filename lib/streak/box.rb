@@ -11,18 +11,18 @@ module Streak
       convert_to_streak_object(res, Box)
     end
 
-    def self.create(pipeline_key, params={})
-      res = Streak.request(:put, "/v1/pipelines/#{pipeline_key}/boxes", params)
+    def self.create(pipeline_key, params={}, api_key=nil)
+      res = Streak.request(:post, "/v2/pipelines/#{pipeline_key}/boxes", params, api_key)
       convert_to_streak_object(res, Box)
     end
 
-    def self.update(key, params)
-      res = Streak.request(:post, "/v1/boxes/#{key}", MultiJson.dump(params))
+    def self.update(key, params, api_key=nil)
+      res = Streak.request(:post, "/v1/boxes/#{key}", MultiJson.dump(params), api_key)
       convert_to_streak_object(res, Box)
     end
 
-    def self.destroy(key)
-      res = Streak.request(:delete, "/v1/boxes/#{key}")
+    def self.destroy(key, api_key=nil)
+      res = Streak.request(:delete, "/v1/boxes/#{key}", {}, api_key)
     end
   end
 end
