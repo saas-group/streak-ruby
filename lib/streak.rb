@@ -57,7 +57,6 @@ module Streak
       :method => method,
       :verify_ssl => false,
       :url  => api_url(url),
-      :user => ,
       :payload => payload
     }
 
