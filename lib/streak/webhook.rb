@@ -24,6 +24,10 @@ module Streak
       res = Streak.request(:post, "/v2/webhooks/#{key}", MultiJson.dump(params), api_key)
       convert_to_streak_object(res, Webhook)
     end
+
+    def self.destroy(key, api_key=nil)
+      res = Streak.request(:delete, "/v2/webhooks/#{key}", {}, api_key)
+    end
   end
 end
 
