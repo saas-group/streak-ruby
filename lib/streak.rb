@@ -104,7 +104,7 @@ module Streak
   private
 
   def self.uri_encode(params)
-    params.map { |k,v| "#{k}=#{URI.escape(v)}" }.join("&")
+    params.map { |k,v| "#{k}=#{URI.encode_www_form_component(v)}" }.join("&")
   end
 
 end
